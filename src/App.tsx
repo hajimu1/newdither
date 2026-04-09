@@ -341,7 +341,6 @@ export default function App() {
 color: UI.colors.textMain,        height: "100vh",
         overflow: "hidden",
         background: UI.colors.bg,
-        color: UI.colors.textMain,
         fontFamily: UI.font.ui,
         fontSize: 12,
       }}
@@ -382,7 +381,6 @@ color: UI.colors.textMain,        height: "100vh",
           isProcessing={isProcessing}
           onFile={handleFile}
           onProcessGif={() => setPreviewPlaying((v) => !v)}
-          onSaveZip={handleSaveZip}
           onReset={resetSettings}
           previewScale={previewScale}
           setPreviewScale={setPreviewScale}
