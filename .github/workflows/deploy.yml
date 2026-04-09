@@ -2,10 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["main"] # main 브랜치에 푸시될 때 실행
-  workflow_dispatch:   # 수동 실행 버튼 활성화
+    branches: ["main"]
+  workflow_dispatch:
 
-# 배포를 위한 권한 설정
 permissions:
   contents: read
   pages: write
@@ -21,7 +20,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24
+          node-version: 20 # 안정적인 20버전 추천
           cache: 'npm'
 
       - name: Install dependencies
@@ -30,13 +29,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      # 빌드된 dist 폴더를 업로드 (Vite 기준)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './dist' # Vite의 기본 빌드 폴더
 
-      # 실제로 웹에 배포
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
